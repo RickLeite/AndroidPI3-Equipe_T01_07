@@ -2,5 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="branco">#FFFFFFFF</color>
+    <color name="azul">#03A9F4</color>
+    <color name="FundoCinza">#E1E4E6</color>
 
 </resources>

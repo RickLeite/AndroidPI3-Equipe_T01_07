@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistrarPonto">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/FundoCinza">
+    </RelativeLayout>
+
+
+    <ImageView
+        android:id="@+id/mapa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/mapa" />
+
+
+    <ImageView
+        android:id="@+id/barra_inferior"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/mapa"
+        app:srcCompat="@drawable/barra_inferior" />
+
+    <Button
+        android:id="@+id/botao_inicio"
+        android:layout_width="110dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginBottom="52dp"
+        android:backgroundTint="@color/azul"
+        android:text="Início"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botao_registrar_ponto"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/botao_relatorio"
+        android:layout_width="110dp"
+        android:layout_height="52dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="52dp"
+        android:backgroundTint="@color/azul"
+        android:text="Relatório"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/botao_registrar_ponto"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="245dp"
+        android:backgroundTint="@color/azul"
+        android:text="Registrar Ponto"
+        android:textSize="22dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewHoraDia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="210dp"
+        android:text="Hora e dia aqui"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
