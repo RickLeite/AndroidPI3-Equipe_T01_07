@@ -1,0 +1,49 @@
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/logoFragment">
+
+    <fragment
+        android:id="@+id/logoFragment"
+        android:name="com.projetointegrador.bateaqui.LogoInicialFragment"
+        android:label="Logo Fragment"
+        tools:layout="@layout/fragment_logo_inicial" >
+
+        <action
+            android:id="@+id/action_logoFragment_to_inicioGeralFragment"
+            app:destination="@id/inicioGeralFragment"
+            app:popUpTo="@id/logoFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/inicioGeralFragment"
+        android:name="com.projetointegrador.bateaqui.InicioGeralFragment"
+        android:label="Inicio Geral Fragment"
+        tools:layout="@layout/fragment_inicio_geral"
+        >
+        <action
+            android:id="@+id/action_inicioGeralFragment_to_registrarPontoFragment"
+            app:destination="@id/registrarPontoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/registrarPontoFragment"
+        android:name="com.projetointegrador.bateaqui.RegistroPontoFragment"
+        android:label="Registrar Ponto Fragment"
+        tools:layout="@layout/fragment_registro_ponto" >
+
+
+        <action
+            android:id="@+id/action_registrarPontoFragment_to_inicioGeralFragment"
+            app:destination="@id/inicioGeralFragment"
+            app:popUpTo="@id/registrarPontoFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+
+
+</navigation>

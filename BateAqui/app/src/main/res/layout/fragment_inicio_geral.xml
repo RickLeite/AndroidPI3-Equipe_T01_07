@@ -1,0 +1,106 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/BackgroundAPPCinza"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/botao_registrar_ponto"
+        android:layout_width="112dp"
+        android:layout_height="83dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="368dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+    />
+
+
+    <Button
+        android:id="@+id/botao_calendario"
+        android:layout_width="112dp"
+        android:layout_height="83dp"
+        android:layout_marginTop="368dp"
+        android:layout_marginEnd="64dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/botao_relatorio"
+        android:layout_width="112dp"
+        android:layout_height="83dp"
+        android:layout_marginBottom="176dp"
+        android:background="@drawable/rounded_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Imagens -->
+    <ImageView
+        android:id="@+id/foto_registrar_ponto"
+        android:layout_width="68dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/botao_registrar_ponto"
+        app:layout_constraintEnd_toEndOf="@+id/botao_registrar_ponto"
+        app:layout_constraintStart_toStartOf="@+id/botao_registrar_ponto"
+        app:layout_constraintTop_toTopOf="@+id/botao_registrar_ponto"
+        app:srcCompat="@drawable/registrar_ponto"
+        android:elevation="2dp" />
+
+    <ImageView
+        android:id="@+id/foto_relatorio"
+        android:layout_width="87dp"
+        android:layout_height="73dp"
+        app:layout_constraintBottom_toBottomOf="@+id/botao_relatorio"
+        app:layout_constraintEnd_toEndOf="@+id/botao_relatorio"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toStartOf="@+id/botao_relatorio"
+        app:layout_constraintTop_toTopOf="@+id/botao_relatorio"
+        app:srcCompat="@drawable/relatorio_horas"
+        android:elevation="2dp" />
+
+    <ImageView
+        android:id="@+id/foto_calendario"
+        android:layout_width="92dp"
+        android:layout_height="62dp"
+        app:layout_constraintBottom_toBottomOf="@+id/botao_calendario"
+        app:layout_constraintEnd_toEndOf="@+id/botao_calendario"
+        app:layout_constraintStart_toStartOf="@+id/botao_calendario"
+        app:layout_constraintTop_toTopOf="@+id/botao_calendario"
+        android:src="@drawable/calendario"
+        android:elevation="2dp" />
+
+    <!-- Retângulo azul -->
+    <View
+        android:id="@+id/blueRectangle"
+        android:layout_width="409dp"
+        android:layout_height="100dp"
+        android:background="@color/light_blue_600"
+        android:layout_gravity="center_horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Imagem do logo -->
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo_bate_aqui"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:maxHeight="200dp"
+        android:layout_margin="40dp"
+        android:layout_gravity="center_horizontal"
+        app:layout_constraintStart_toEndOf="@+id/blueRectangle"
+        app:layout_constraintTop_toBottomOf="@+id/blueRectangle" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
