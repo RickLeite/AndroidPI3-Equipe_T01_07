@@ -5,6 +5,6 @@ import java.util.Date
 data class UserPonto(
     val name: String,
     val email: String,
-    val identifier: Int,
+    val identifier: String,
     val dateHour: Date
 )

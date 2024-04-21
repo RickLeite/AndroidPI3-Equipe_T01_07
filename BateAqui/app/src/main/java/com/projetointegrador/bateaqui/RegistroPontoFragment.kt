@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import com.projetointegrador.bateaqui.auth.util.FirebaseAuthUtil
 import com.projetointegrador.bateaqui.database.FirestoreUtil
 import com.projetointegrador.bateaqui.database.UserPonto
 import java.text.SimpleDateFormat
@@ -41,23 +42,28 @@ class RegistroPontoFragment : Fragment() {
     private fun setupBotaoRegistrarPonto(view: View) {
         val botaoRegistrarPonto = view.findViewById<Button>(R.id.botao_registro_ponto)
         botaoRegistrarPonto.setOnClickListener {
-            val name = "Name"
-            val email = "Email"
-            val identifier = 1815
-            val dateHour = Calendar.getInstance().time
+            val currentUserData = FirebaseAuthUtil.getCurrentUserData()
+            if (currentUserData != null) {
+                val userPonto = UserPonto(
+                    name = currentUserData.displayName ?: "No name",
+                    email = currentUserData.email ?: "No email",
+                    identifier = currentUserData.uid ?: "No UID",
+                    dateHour = Calendar.getInstance().time
+                )
 
-            val userPonto = UserPonto(name, email, identifier, dateHour)
-
-            FirestoreUtil.addPonto(userPonto,
-                onSuccess = { documentId ->
-                    Log.d(TAG, "Ponto registrado com sucesso! Document ID: $documentId")
-                    Toast.makeText(context, "Ponto registrado com sucesso!", Toast.LENGTH_SHORT).show()
-                },
-                onFailure = { e ->
-                    Log.e(TAG, "Erro ao registrar ponto", e)
-                    Toast.makeText(context, "Erro ao registrar ponto", Toast.LENGTH_SHORT).show()
-                }
-            )
+                FirestoreUtil.addPonto(userPonto,
+                    onSuccess = { documentId ->
+                        Log.d(TAG, "Ponto registrado com sucesso! Document ID: $documentId")
+                        Toast.makeText(context, "Ponto registrado com sucesso!", Toast.LENGTH_SHORT).show()
+                    },
+                    onFailure = { e ->
+                        Log.e(TAG, "Erro ao registrar ponto", e)
+                        Toast.makeText(context, "Erro ao registrar ponto", Toast.LENGTH_SHORT).show()
+                    }
+                )
+            } else {
+                Toast.makeText(context, "Usuário não autenticado", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

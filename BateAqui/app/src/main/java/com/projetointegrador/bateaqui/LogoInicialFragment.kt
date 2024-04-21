@@ -8,28 +8,48 @@ import android.view.ViewGroup
 import android.os.Handler
 import android.os.Looper
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+import com.projetointegrador.bateaqui.databinding.FragmentLogoInicialBinding
 
 class LogoInicialFragment : Fragment() {
+    private var _binding: FragmentLogoInicialBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var auth: FirebaseAuth
 
-    private val delayTimeLogo: Long = 2000 // 2 segundos
-    private val handler = Handler(Looper.getMainLooper())
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_logo_inicial, container, false)
+    ): View {
+        _binding = FragmentLogoInicialBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        handler.postDelayed({
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        Handler(Looper.getMainLooper()).postDelayed(this::checkAuth, 3000)
+        auth = Firebase.auth
+    }
+
+    private fun checkAuth() {
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
             findNavController().navigate(R.id.action_logoFragment_to_inicioGeralFragment)
-        }, delayTimeLogo)
 
-        return view
+        } else {
+
+            findNavController().navigate(R.id.action_logoInicialFragment_to_navigation)
+
+        }
     }
 
     override fun onDestroyView() {
-
-        handler.removeCallbacksAndMessages(null)
         super.onDestroyView()
+        _binding = null
     }
+
 }

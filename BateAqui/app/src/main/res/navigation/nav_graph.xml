@@ -9,14 +9,53 @@
         android:name="com.projetointegrador.bateaqui.LogoInicialFragment"
         android:label="Logo Fragment"
         tools:layout="@layout/fragment_logo_inicial" >
-
+        <action
+            android:id="@+id/action_logoInicialFragment_to_navigation"
+            app:destination="@id/autenticacao"
+            app:popUpTo="@id/logoFragment"
+            app:popUpToInclusive="true"/>
         <action
             android:id="@+id/action_logoFragment_to_inicioGeralFragment"
             app:destination="@id/inicioGeralFragment"
             app:popUpTo="@id/logoFragment"
             app:popUpToInclusive="true" />
-
     </fragment>
+
+
+
+    <navigation android:id="@+id/autenticacao"
+        app:startDestination="@id/loginFragment">
+        <fragment
+            android:id="@+id/loginFragment"
+            android:name="com.projetointegrador.bateaqui.auth.LoginFragment"
+            android:label="fragment_login"
+            tools:layout="@layout/fragment_login"
+            >
+            <action
+                android:id="@+id/action_loginFragment_to_criarContaFragment"
+                app:destination="@id/criarContaFragment" />
+            <action
+                android:id="@+id/action_loginFragment_to_recuperarContaFragment"
+                app:destination="@id/recuperarContaFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/criarContaFragment"
+            android:name="com.projetointegrador.bateaqui.auth.CriarContaFragment"
+            android:label="fragment_criar_conta"
+            tools:layout="@layout/fragment_criar_conta" />
+        <fragment
+            android:id="@+id/recuperarContaFragment"
+            android:name="com.projetointegrador.bateaqui.auth.RecuperarContaFragment"
+            android:label="fragment_recuperar_conta"
+            tools:layout="@layout/fragment_recuperar_conta" />
+        <action
+            android:id="@+id/action_global_inicioGeralFragment"
+            app:destination="@id/inicioGeralFragment"
+            app:popUpTo="@id/autenticacao"
+            app:popUpToInclusive="true"/>
+
+    </navigation>
+
 
 
     <fragment
