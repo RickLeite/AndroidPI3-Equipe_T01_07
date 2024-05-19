@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/BackgroundAPPCinza"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <View
+        android:id="@+id/convex_background"
+        android:layout_width="wrap_content"
+        android:layout_height="130dp"
+        android:layout_marginTop="670dp"
+        android:background="@drawable/convex_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/botao_relatorio"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="@id/botao_inicio"
+        app:layout_constraintTop_toTopOf="@+id/botao_inicio"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/botao_inicio"
+        android:layout_width="110dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="705dp"
+        android:layout_marginBottom="52dp"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="@color/light_blue_600"
+        android:text="Início"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/botao_registrar_ponto"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/botao_relatorio"
+        android:layout_width="110dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="228dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="52dp"
+        android:layout_marginTop="705dp"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="@color/light_blue_600"
+        android:text="Relatório"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Switch
+        android:id="@+id/switch_segunda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="205dp"
+        android:layout_marginStart="38dp"
+        android:text="Segunda-Feira: "
+        android:textColor="@color/black"
+        android:thumbTint="@color/light_blue_600"
+        android:textSize="20dp"
+        android:checked="true"/>
+
+    <Switch
+        android:id="@+id/switch_terca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="245dp"
+        android:layout_marginStart="38dp"
+        android:text="Terça-Feira:      "
+        android:textColor="@color/black"
+        android:thumbTint="@color/light_blue_600"
+        android:textSize="20dp"
+        android:checked="true"/>
+
+    <Switch
+        android:id="@+id/switch_quarta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="285dp"
+        android:layout_marginStart="38dp"
+        android:text="Quarta-Feira:    "
+        android:textColor="@color/black"
+        android:thumbTint="@color/light_blue_600"
+        android:textSize="20dp"
+        android:checked="true"/>
+
+    <Switch
+        android:id="@+id/switch_quinta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="325dp"
+        android:layout_marginStart="38dp"
+        android:text="Quinta-Feira:    "
+        android:textColor="@color/black"
+        android:thumbTint="@color/light_blue_600"
+        android:textSize="20dp"
+        android:checked="true"/>
+
+    <Switch
+        android:id="@+id/switch_sexta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="365dp"
+        android:layout_marginStart="38dp"
+        android:text="Sexta-Feira:      "
+        android:textColor="@color/black"
+        android:thumbTint="@color/light_blue_600"
+        android:textSize="20dp"
+        android:checked="true"/>
+
+    <Switch
+        android:id="@+id/switch_sabado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="405dp"
+        android:layout_marginStart="38dp"
+        android:text="Sábado:            "
+        android:textColor="@color/black"
+        android:thumbTint="@color/light_blue_600"
+        android:textSize="20dp"
+        android:checked="true"/>
+
+    <EditText
+        android:id="@+id/HorarioEntrada"
+        android:layout_width="142dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="205dp"
+        android:ems="10"
+        android:hint="Horário Entrada"
+        android:inputType="time"
+        android:backgroundTint="@color/black"
+        android:textColorHint="@color/black"
+        android:textColor="@color/black"/>
+
+    <EditText
+        android:id="@+id/HorarioSaida"
+        android:layout_width="142dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="305dp"
+        android:ems="10"
+        android:hint="Horário Saída"
+        android:inputType="time"
+        android:backgroundTint="@color/black"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"/>
+
+    <Switch
+        android:id="@+id/switch_entrda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="285dp"
+        android:layout_marginTop="265dp"
+        android:thumbTint="@color/light_blue_600"
+        />
+
+    <TextView
+        android:id="@+id/AM_entrada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="260dp"
+        android:layout_marginTop="265dp"
+        android:text="AM"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/PM_entrada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="330dp"
+        android:layout_marginTop="265dp"
+        android:text="PM"
+        android:textColor="@color/black"/>
+
+    <Switch
+        android:id="@+id/switch_saida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="285dp"
+        android:layout_marginTop="355dp"
+        android:thumbTint="@color/light_blue_600"
+        />
+
+    <TextView
+        android:id="@+id/AM_saida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="260dp"
+        android:layout_marginTop="360dp"
+        android:text="AM"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/PM_saida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="330dp"
+        android:layout_marginTop="360dp"
+        android:text="PM"
+        android:textColor="@color/black" />
+
+    <Button
+        android:id="@+id/botao_confirmar_calendario"
+        android:layout_width="210dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="52dp"
+        android:layout_marginTop="505dp"
+        android:background="@drawable/rounded_button"
+        android:backgroundTint="@color/light_blue_600"
+        android:text="Confirmar Calendário"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</FrameLayout>
