@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "618735219288",
+    "project_id": "pi3-t01-07-bateaqui",
+    "storage_bucket": "pi3-t01-07-bateaqui.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:618735219288:android:b61e558bffd6dce26a102d",
+        "android_client_info": {
+          "package_name": "com.projetointegrador.bateaqui"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAocjMxonme6UNVTeGzRzeD2qjhuiaENcw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:618735219288:android:51d7b0cb686113026a102d",
+        "android_client_info": {
+          "package_name": "com.projetointegrador.bateaqui_adm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAocjMxonme6UNVTeGzRzeD2qjhuiaENcw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
