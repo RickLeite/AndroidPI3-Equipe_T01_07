@@ -30,6 +30,12 @@ class HomePage extends StatelessWidget {
               },
               child: const Text('Esqueci Senha'),
             ),
+            ElevatedButton(
+              onPressed: () {
+                context.go('/user-reports');
+              },
+              child: const Text('user-reports'),
+            ),
           ],
         ),
       ),

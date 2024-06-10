@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
-
 import 'package:go_router/go_router.dart';
+
 import 'package:bateaqui_adm/pages/home_page.dart';
 import 'package:bateaqui_adm/pages/auth/login_page.dart';
 import 'package:bateaqui_adm/pages/auth/register_page.dart';
 import 'package:bateaqui_adm/pages/auth/forgot_password_page.dart';
+import 'package:bateaqui_adm/pages/reports/user_reports.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
+import 'firebase_options.dart';
 
-import 'package:bateaqui_adm/pages/home_page.dart';
-
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -36,30 +39,27 @@ final GoRouter _router = GoRouter(
     GoRoute(
       name: "/home",
       path: "/home",
-      builder: (context, state) {
-        return const HomePage();
-      },
+      builder: (context, state) => const HomePage(),
     ),
     GoRoute(
       name: "/login",
       path: '/login',
-      builder: (context, state) {
-        return const LoginPage();
-      },
+      builder: (context, state) => const LoginPage(),
     ),
     GoRoute(
       name: "/register",
       path: '/register',
-      builder: (context, state) {
-        return const RegisterPage();
-      },
+      builder: (context, state) => const RegisterPage(),
     ),
     GoRoute(
       name: "/forgot-password",
       path: '/forgot-password',
-      builder: (context, state) {
-        return const ForgotPasswordPage();
-      },
-    )
+      builder: (context, state) => const ForgotPasswordPage(),
+    ),
+    GoRoute(
+      name: "user-reports",
+      path: '/user-reports',
+      builder: (context, state) => UserReports(),
+    ),
   ],
 );
