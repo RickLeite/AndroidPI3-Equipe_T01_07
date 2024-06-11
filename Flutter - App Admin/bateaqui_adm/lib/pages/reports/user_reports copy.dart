@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 import 'package:month_picker_dialog/month_picker_dialog.dart';
 import '../../services/UserPontosService.dart';
-import 'package:go_router/go_router.dart';
 
 class UserReports extends StatefulWidget {
   @override
@@ -48,20 +47,9 @@ class _UserReportsState extends State<UserReports> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Ponto'),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () => GoRouter.of(context).go('/home'),
-        ),
       ),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              'Relátorio Gerencial',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextField(
@@ -72,24 +60,16 @@ class _UserReportsState extends State<UserReports> {
             ),
           ),
           ListTile(
-            title: Text('Mês/Ano:'),
+            title: Text('Month'),
             subtitle: Text(
-              "${selectedDate.month.toString().padLeft(2, '0')}/${selectedDate.year}",
+              "${selectedDate.month}/${selectedDate.year}",
             ),
             trailing: Icon(Icons.calendar_today),
             onTap: () => _selectDate(context),
           ),
           ElevatedButton(
             onPressed: _fetchData,
-            child: Text(
-              'Relatório',
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-            ),
-            style: ButtonStyle(
-              backgroundColor:
-                  WidgetStateProperty.all<Color>(Colors.blue[700]!),
-            ),
+            child: Text('Fetch Data'),
           ),
           Expanded(
             child: ListView.builder(
@@ -102,6 +82,8 @@ class _UserReportsState extends State<UserReports> {
 
                 return ListTile(
                   title: Text("Registro " + formattedDate),
+                  subtitle:
+                      Text("Email: ${userPontoDataFiltered[index]['email']}"),
                 );
               },
             ),

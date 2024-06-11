@@ -6,6 +6,7 @@ import 'package:bateaqui_adm/pages/auth/login_page.dart';
 import 'package:bateaqui_adm/pages/auth/register_page.dart';
 import 'package:bateaqui_adm/pages/auth/forgot_password_page.dart';
 import 'package:bateaqui_adm/pages/reports/user_reports.dart';
+import 'package:bateaqui_adm/pages/reports/user_reports_calendar.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'firebase_options.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routerConfig: _router,
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -61,5 +63,10 @@ final GoRouter _router = GoRouter(
       path: '/user-reports',
       builder: (context, state) => UserReports(),
     ),
+    GoRoute(
+      name: "user-reports-calendar",
+      path: '/user-reports-calendar',
+      builder: (context, state) => UserReportsCalendar(),
+    )
   ],
 );

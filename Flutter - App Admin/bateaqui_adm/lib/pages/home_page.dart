@@ -36,6 +36,12 @@ class HomePage extends StatelessWidget {
               },
               child: const Text('user-reports'),
             ),
+            ElevatedButton(
+              onPressed: () {
+                context.go('/user-reports-calendar');
+              },
+              child: const Text('user-reports-calendar'),
+            ),
           ],
         ),
       ),
