@@ -6,7 +6,7 @@ import 'package:bateaqui_adm/pages/auth/login_page.dart';
 import 'package:bateaqui_adm/pages/auth/register_page.dart';
 import 'package:bateaqui_adm/pages/auth/forgot_password_page.dart';
 import 'package:bateaqui_adm/pages/reports/user_reports.dart';
-import 'package:bateaqui_adm/pages/reports/user_reports_calendar.dart';
+import 'package:bateaqui_adm/pages/reports/user_reports_admin.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'firebase_options.dart';
@@ -64,9 +64,9 @@ final GoRouter _router = GoRouter(
       builder: (context, state) => UserReports(),
     ),
     GoRoute(
-      name: "user-reports-calendar",
-      path: '/user-reports-calendar',
-      builder: (context, state) => UserReportsCalendar(),
+      name: "user-reports-admin",
+      path: '/user-reports-admin',
+      builder: (context, state) => UserReportsAdmin(),
     )
   ],
 );

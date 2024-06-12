@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 import 'package:month_picker_dialog/month_picker_dialog.dart';
-import '../../services/UserPontosService.dart';
+import 'package:bateaqui_adm/services/UserPontosService.dart';
 import 'package:go_router/go_router.dart';
 
 class UserReports extends StatefulWidget {
