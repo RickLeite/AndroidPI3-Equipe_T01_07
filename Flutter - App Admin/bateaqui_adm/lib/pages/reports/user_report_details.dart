@@ -31,15 +31,26 @@ class _UserReportsDetailsState extends State<UserReportsDetails> {
 
     userPontoDataFiltered =
         userPontoData.where((item) => item['email'] == email).toList();
+
     setState(() {});
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text('Relatório gerado com sucesso!'),
-        backgroundColor: Colors.green,
-        duration: Duration(seconds: 2),
-      ),
-    );
+    if (userPontoDataFiltered.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Nenhum dado encontrado'),
+          backgroundColor: Colors.red,
+          duration: Duration(seconds: 2),
+        ),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Relatório gerado com sucesso!'),
+          backgroundColor: Colors.green,
+          duration: Duration(seconds: 2),
+        ),
+      );
+    }
   }
 
   @override
@@ -70,7 +81,7 @@ class _UserReportsDetailsState extends State<UserReportsDetails> {
                       DateFormat('dd-MM-yyyy HH:mm').format(dateTime);
 
                   return ListTile(
-                    title: Text("Registro " + formattedDate),
+                    title: Text("Registro $formattedDate"),
                   );
                 },
               ),

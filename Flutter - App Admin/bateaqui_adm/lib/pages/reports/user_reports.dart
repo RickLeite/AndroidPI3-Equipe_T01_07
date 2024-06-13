@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:month_picker_dialog/month_picker_dialog.dart';
-import 'package:bateaqui_adm/services/UserPontosService.dart';
 import 'package:go_router/go_router.dart';
 
 class UserReports extends StatefulWidget {
@@ -9,23 +8,22 @@ class UserReports extends StatefulWidget {
 }
 
 class _UserReportsState extends State<UserReports> {
-  UserPontosService _userPontosService = UserPontosService();
   final _emailController = TextEditingController();
   List<Map<String, dynamic>> userPontoData = [];
   List<Map<String, dynamic>> userPontoDataFiltered = [];
   DateTime selectedDate = DateTime.now();
 
-  void _fetchData() async {
-    String email = _emailController.text;
-    userPontoData = await _userPontosService.fetchUserPontoByEmailMonth(
-        selectedDate.year, selectedDate.month);
-
-    userPontoDataFiltered =
-        userPontoData.where((item) => item['email'] == email).toList();
-    setState(() {});
-  }
-
   void _showUserReports(String email, DateTime selectedDate) {
+    if (email.isEmpty || !email.contains('@')) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(email.isEmpty ? 'Informe o email!' : 'Email inválido!'),
+          backgroundColor: Colors.red,
+          duration: Duration(seconds: 2),
+        ),
+      );
+      return;
+    }
     GoRouter.of(context).go('/user-reports-details',
         extra: {'email': email, 'date': selectedDate});
   }
@@ -56,8 +54,8 @@ class _UserReportsState extends State<UserReports> {
       ),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
             child: Text(
               'Consultar Ponto',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
