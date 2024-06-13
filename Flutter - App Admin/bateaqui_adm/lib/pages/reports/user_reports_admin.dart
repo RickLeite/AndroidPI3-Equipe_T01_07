@@ -1,9 +1,6 @@
-// UserReportsAdmin.dart
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
-import 'package:month_picker_dialog/month_picker_dialog.dart';
 import 'package:bateaqui_adm/services/UserPontosService.dart';
 import 'package:go_router/go_router.dart';
 import 'package:bateaqui_adm/models/user.dart';
@@ -39,6 +36,16 @@ class _UserReportsAdminState extends State<UserReportsAdmin> {
 
     await _userPontosService.inserUserPonto(userPontoDataMapp);
     print("Inserido");
+
+    // Show success message
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Ponto inserido com sucesso!'),
+        backgroundColor: Colors.green, // Set the background color to green
+        duration: Duration(seconds: 2),
+      ),
+    );
+
     setState(() {});
   }
 
@@ -96,7 +103,7 @@ class _UserReportsAdminState extends State<UserReportsAdmin> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Ponto'),
+        title: Text('Inserir Ponto'),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () => GoRouter.of(context).go('/home'),
@@ -107,7 +114,7 @@ class _UserReportsAdminState extends State<UserReportsAdmin> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              'Relátorio Gerencial',
+              'Inserção Manual',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
           ),
@@ -142,7 +149,7 @@ class _UserReportsAdminState extends State<UserReportsAdmin> {
             ),
             style: ButtonStyle(
               backgroundColor:
-                  WidgetStateProperty.all<Color>(Colors.blue[700]!),
+                  MaterialStateProperty.all<Color>(Colors.blue[700]!),
             ),
           ),
         ],

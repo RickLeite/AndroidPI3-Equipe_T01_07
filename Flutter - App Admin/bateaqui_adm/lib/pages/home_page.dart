@@ -7,41 +7,54 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Home Page')),
+      appBar: AppBar(
+        title: const Text('Tela Inicial'),
+        centerTitle: true, // Centraliza o título
+      ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment:
+              MainAxisAlignment.start, // Alinha os widgets no topo
           children: <Widget>[
-            ElevatedButton(
-              onPressed: () {
-                context.go('/login');
-              },
-              child: const Text('Login'),
+            Spacer(flex: 2), // Espaço flexível para ajustar a posição vertical
+            Image.asset(
+              'assets/images/logoAdm.png', // Caminho para a logo
+              height: 120.0, // Defina a altura desejada para a logo
             ),
-            ElevatedButton(
-              onPressed: () {
-                context.go('/register');
-              },
-              child: const Text('Registro'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                context.go('/forgot-password');
-              },
-              child: const Text('Esqueci Senha'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                context.go('/user-reports');
-              },
-              child: const Text('user-reports'),
-            ),
+            const SizedBox(height: 95), // Espaço entre a logo e os botões
             ElevatedButton(
               onPressed: () {
                 context.go('/user-reports-admin');
               },
-              child: const Text('user-reports-admin'),
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.lightBlue[600], // Cor do texto branco
+              ),
+              child: const Text('Inserir Ponto'),
             ),
+            const SizedBox(height: 20), // Espaço entre os botões
+            ElevatedButton(
+              onPressed: () {
+                context.go('/user-reports');
+              },
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.lightBlue[600], // Cor do texto branco
+              ),
+              child: const Text('Relátorio Gerencial Individual'),
+            ),
+            const SizedBox(height: 20), // Espaço entre os botões
+            ElevatedButton(
+              onPressed: () {
+                context.go('/user-reports-collective');
+              },
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.lightBlue[600], // Cor do texto branco
+              ),
+              child: const Text('Relátorio Gerencial Coletivo'),
+            ),
+            Spacer(flex: 5), // Espaço flexível para ajustar a posição vertical
           ],
         ),
       ),

@@ -3,32 +3,27 @@ import 'package:month_picker_dialog/month_picker_dialog.dart';
 import 'package:bateaqui_adm/services/UserPontosService.dart';
 import 'package:go_router/go_router.dart';
 
-class UserReports extends StatefulWidget {
+class UserReportsCollective extends StatefulWidget {
   @override
-  _UserReportsState createState() => _UserReportsState();
+  _UserReportsCollectiveState createState() => _UserReportsCollectiveState();
 }
 
-class _UserReportsState extends State<UserReports> {
+class _UserReportsCollectiveState extends State<UserReportsCollective> {
   UserPontosService _userPontosService = UserPontosService();
-  final _emailController = TextEditingController();
   List<Map<String, dynamic>> userPontoData = [];
-  List<Map<String, dynamic>> userPontoDataFiltered = [];
-  DateTime selectedDate = DateTime.now();
+  List<String> userEmails = [];
 
   void _fetchData() async {
-    String email = _emailController.text;
     userPontoData = await _userPontosService.fetchUserPontoByEmailMonth(
         selectedDate.year, selectedDate.month);
 
-    userPontoDataFiltered =
-        userPontoData.where((item) => item['email'] == email).toList();
+    userEmails = List<String>.from(
+        userPontoData.map((item) => item['email']).toSet().toList());
+
     setState(() {});
   }
 
-  void _showUserReports(String email, DateTime selectedDate) {
-    GoRouter.of(context).go('/user-reports-details',
-        extra: {'email': email, 'date': selectedDate});
-  }
+  DateTime selectedDate = DateTime.now();
 
   void _selectDate(BuildContext context) async {
     final DateTime? picked = await showMonthPicker(
@@ -44,11 +39,16 @@ class _UserReportsState extends State<UserReports> {
     }
   }
 
+  void _showUserReports(String email, DateTime selectedDate) {
+    GoRouter.of(context).go('/user-reports-details',
+        extra: {'email': email, 'date': selectedDate});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Relátorio Gerencial - Individual'),
+        title: Text('Relátorio Gerencial - Coletivo'),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () => GoRouter.of(context).go('/home'),
@@ -63,15 +63,6 @@ class _UserReportsState extends State<UserReports> {
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: _emailController,
-              decoration: InputDecoration(
-                labelText: 'Email',
-              ),
-            ),
-          ),
           ListTile(
             title: Text('Mês/Ano:'),
             subtitle: Text(
@@ -81,8 +72,7 @@ class _UserReportsState extends State<UserReports> {
             onTap: () => _selectDate(context),
           ),
           ElevatedButton(
-            onPressed: () =>
-                _showUserReports(_emailController.text, selectedDate),
+            onPressed: _fetchData,
             child: Text(
               'Relatório',
               style:
@@ -91,6 +81,18 @@ class _UserReportsState extends State<UserReports> {
             style: ButtonStyle(
               backgroundColor:
                   WidgetStateProperty.all<Color>(Colors.blue[700]!),
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: userEmails.length,
+              itemBuilder: (context, index) {
+                String email = userEmails[index];
+                return ListTile(
+                  title: Text(email),
+                  onTap: () => _showUserReports(email, selectedDate),
+                );
+              },
             ),
           ),
         ],

@@ -1,3 +1,4 @@
+import 'package:bateaqui_adm/pages/reports/user_reports_collective.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -7,6 +8,7 @@ import 'package:bateaqui_adm/pages/auth/register_page.dart';
 import 'package:bateaqui_adm/pages/auth/forgot_password_page.dart';
 import 'package:bateaqui_adm/pages/reports/user_reports.dart';
 import 'package:bateaqui_adm/pages/reports/user_reports_admin.dart';
+import 'package:bateaqui_adm/pages/reports/user_report_details.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'firebase_options.dart';
@@ -67,6 +69,22 @@ final GoRouter _router = GoRouter(
       name: "user-reports-admin",
       path: '/user-reports-admin',
       builder: (context, state) => UserReportsAdmin(),
-    )
+    ),
+    GoRoute(
+      name: "user-reports-collective",
+      path: '/user-reports-collective',
+      builder: (context, state) => UserReportsCollective(),
+    ),
+    GoRoute(
+      path: '/user-reports-details',
+      builder: (context, state) {
+        final extra = state.extra as Map<String, dynamic>?;
+
+        final email = extra?['email'] as String? ?? 'não-encontrado';
+        final date = extra?['date'] as DateTime? ?? DateTime.now();
+
+        return UserReportsDetails(email: email, date: date);
+      },
+    ),
   ],
 );

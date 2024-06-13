@@ -51,8 +51,6 @@ class UserPontosService {
     DateTime start = DateTime(year, month);
     DateTime end = DateTime(year, month + 1);
 
-    String email = 'david.sm1@puccampinas.edu.br';
-
     QuerySnapshot querySnapshot = await _firestore
         .collection('user_pontos')
         .where('dateHour', isGreaterThanOrEqualTo: start)
